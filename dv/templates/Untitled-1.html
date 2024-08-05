@@ -1,0 +1,82 @@
+{% load static %}
+<html>
+    <head><h3>Data Visualization<h3>
+    <style>
+        h2{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            color:orangered;
+        
+        }
+        body{
+            /*background-image: url('{% static "E:/django project/vis/static/1.jpg" %}');*/
+            
+            background-image:url('{% static "E:/django project/data vis/dv/static/bg.jpg" %}');
+            background-repeat: no-repeat;
+            background-position:initial;
+            background-size: cover;
+        }
+        h3{
+            font-size: large;
+            font-family: cursive;
+            flex-direction:row-reverse;
+            color: coral;
+        }
+        p{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: oblique;
+            font-display:inherit;
+            font-weight: 200;
+            font-size: larger;
+            font-variant-emoji:normal;
+            color:darkmagenta;
+        }
+        input[type="file"] {
+            border: 2px solid darkgreen; /* Add border style and color */
+            padding: 10px; /* Add padding for better appearance */
+            background-color: #f0f0f0; /* Optional: background color for the file input */
+            border-radius: 4px; /* Optional: rounded corners for the file input */
+        }
+        input[type="text"],
+        input[type="email"]{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            color: crimson;
+        
+        } 
+        form{
+            background-color: antiquewhite;
+            padding: 10px;
+            width:fit-content;
+        }
+        input[type="SUBMIT"] {
+            border: 2px solid darkgreen; /* Add border style and color */
+            padding: 10px; /* Add padding for better appearance */
+            background-color: #f0f0f0; /* Optional: background color for the file input */
+            border-radius: 4px; /* Optional: rounded corners for the file input */
+        }
+    </style>
+    </head>
+
+    <title>Visualize here</title>
+    <body>
+        <h2>Upload your file here to receive detailed insights and visualizations. Transform your data into actionable information effortlessly </h2>
+        <p><b>Fill up the form<b></P>
+            {% block content %}
+            <form method="post" enctype="multipart/form-data">
+                <label for"Uname">Name:</label>
+                <input type="text" id="Uname" value="Enter your name here"><br><br>
+                <label for"email">Email:</label>
+                <input type="email" id="mail" value="Enter your email here">
+                <p><i>click the choose file button to upload your file</i></P>
+                    {%csrf_token%}
+                <input type="file" id="myfile" class="a1" value="select your file"name="excel_file" accept=".xlsx, .xls">
+                <input type="submit" class="a1  ">
+                </form>
+                {% if chart %}
+                <h2>Chart</h2>
+                <img src="data:image/png;base64,{{ chart }}" alt="Chart">
+                {% endif %}
+                {% endblock %}
+        
+
+
+</html>
