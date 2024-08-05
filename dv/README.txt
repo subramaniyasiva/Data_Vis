@@ -12,3 +12,7 @@ and add templates and static directories.
 
 ABOUT:
 DATA VIS is a very simple django based web applications which allow the users to upload the CSV file which in return gives the first and last 5 rows ,summary statistics and bar plot which generated using matplotlib.pyplot library
+
+NOTE: After Extracting the files change the location of  images and tags in views and templates to as per your system comfigurations.
+to run the development server--> python manage.py runserver 
+ 
